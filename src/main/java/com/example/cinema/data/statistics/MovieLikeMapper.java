@@ -1,6 +1,9 @@
 package com.example.cinema.data.statistics;
 
 import com.example.cinema.po.DateLike;
+import com.example.cinema.po.MovieLikePO;
+import com.example.cinema.vo.MovieLikeVO;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -50,4 +53,9 @@ public interface MovieLikeMapper {
      * @return
      */
     List<DateLike> getDateLikeNum(@Param("movieId") int movieId);
+    /**
+     * 获得喜爱电影的列表
+     * @return
+     */
+    List<MovieLikePO> getMovieLikeNum();
 }

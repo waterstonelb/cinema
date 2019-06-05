@@ -22,6 +22,14 @@
         select count(*) as like_num ,DATE(like_time) as `time` from movie_like ml where movie_id=#{movieId} GROUP BY DATE(ml.like_time)
     </select>
 
+    <select id="getMovieLikeNum" resultType="com.example.cinema.po.MovieLikePO">
+        select likenum as likeNum,name as moviename from movie
+        right join
+        (select movie_id as movieid,count(*) as Likenum from movie_like group by movie_like.movie_id) s
+        on s.movieid=movie.id
+        group by movie.id;
+    </select>
+
     <resultMap id="MovieLike" type="com.example.cinema.po.DateLike">
         <result column="time" property="likeTime"></result>
         <result column="like_num" property="likeNum"></result>

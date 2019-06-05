@@ -1,7 +1,7 @@
 package com.example.cinema.blImpl.management.schedule;
 
 import com.example.cinema.po.Movie;
-import com.example.cinema.vo.MovieVO8;
+import com.example.cinema.vo.MovieVO;
 
 /**
  * @author fjj

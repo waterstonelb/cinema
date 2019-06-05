@@ -36,4 +36,10 @@ public interface MovieLikeService {
      * @return
      */
     ResponseVO getLikeNumsGroupByDate(int movieId);
+    
+    /**
+     * 获得电影想看人数的列表便于展示
+     * @return ResponseVO
+     */
+    ResponseVO getlikemovielist();
 }

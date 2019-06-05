@@ -8,7 +8,9 @@ import com.example.cinema.blImpl.management.schedule.MovieServiceForBl;
 import com.example.cinema.data.statistics.MovieLikeMapper;
 import com.example.cinema.data.user.AccountMapper;
 import com.example.cinema.po.DateLike;
+import com.example.cinema.po.MovieLikePO;
 import com.example.cinema.vo.DateLikeVO;
+import com.example.cinema.vo.MovieLikeVO;
 import com.example.cinema.vo.ResponseVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -96,5 +98,23 @@ public class MovieLikeServiceImpl implements MovieLikeService {
             dateLikeVOList.add(new DateLikeVO(dateLike));
         }
         return dateLikeVOList;
+    }
+
+	@Override
+	public ResponseVO getlikemovielist() {
+        try {
+            return ResponseVO.buildSuccess(MovieLikeList2DateLikeVOList(movieLikeMapper.getMovieLikeNum()));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseVO.buildFailure("失败");
+        }
+	}
+	
+    private List<MovieLikeVO> MovieLikeList2DateLikeVOList(List<MovieLikePO> MovieLike) {
+        List<MovieLikeVO> MovieLikeVOList = new ArrayList<>();
+        for (MovieLikePO movielike  : MovieLike) {
+            MovieLikeVOList.add(new MovieLikeVO(movielike));
+        }
+        return MovieLikeVOList;
     }
 }
